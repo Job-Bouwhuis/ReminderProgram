@@ -28,19 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(12, 12);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(238, 426);
+            this.treeView1.TabIndex = 0;
             // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(262, 450);
+            this.Controls.Add(this.treeView1);
             this.Name = "MainScreen";
-            this.Text = "Form1";
+            this.Text = "Reminder Program";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private TreeView treeView1;
     }
 }
