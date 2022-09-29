@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitRepositories\\Visual\\Reminder\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
+      "projectUniqueName": "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
       "projectName": "ReminderProgram",
-      "projectPath": "C:\\GitRepositories\\Visual\\Reminder\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
+      "projectPath": "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
       "packagesPath": "C:\\Users\\jobbo\\.nuget\\packages\\",
-      "outputPath": "C:\\GitRepositories\\Visual\\Reminder\\ReminderProgram\\ReminderProgram\\obj\\",
+      "outputPath": "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
