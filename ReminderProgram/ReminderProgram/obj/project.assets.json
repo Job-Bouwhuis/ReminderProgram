@@ -750,19 +750,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Luke\\.nuget\\packages\\": {}
+    "C:\\Users\\jobbo\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
+      "projectUniqueName": "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
       "projectName": "ReminderProgram",
-      "projectPath": "D:\\Github\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
-      "packagesPath": "C:\\Users\\Luke\\.nuget\\packages\\",
-      "outputPath": "D:\\Github\\ReminderProgram\\ReminderProgram\\ReminderProgram\\obj\\",
+      "projectPath": "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
+      "packagesPath": "C:\\Users\\jobbo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Luke\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jobbo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -770,6 +775,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "D:\\SnowLibrary Nuget package source": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -812,7 +819,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

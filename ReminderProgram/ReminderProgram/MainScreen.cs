@@ -9,23 +9,32 @@ namespace ReminderProgram
     {
         public Redis redis;
 
+
         public MainScreen()
         {
             InitializeComponent();
-            ConnectToRedis();
+            redis = GetConnection();
+            _ = redis.Connect();
+            redis.OnRedisConnect += RedisConnected;
+           
         }
-        public void ConnectToRedis()
+        private static Redis GetConnection(bool forceLogin = false)
         {
             Connection connection = SnowSerializer.Deserialize<Connection>(AppSettings.Default.DefualtConnection);
-            if(connection == null || connection.port == 0)
+            if (forceLogin || connection == null || connection.port == 0)
             {
                 LoginScreen login = new();
                 connection = login.Login();
             }
-            redis = new(connection);
-
-            redis.GetAllKeys()?.Foreach(x => TaskViewer.Nodes.Add(new TreeNode(x)));
+            return new(connection);
         }
+
+
+        public void RedisConnected()
+        {
+            redis.GetAllKeys()?.Foreach(x => TaskViewer.Nodes.Add(x));
+        }
+
         private void NewButton_Click(object sender, EventArgs e)
         {
             var addScreen = new AddScreen();
@@ -33,6 +42,11 @@ namespace ReminderProgram
             Hide();
             addScreen.ShowDialog();
             Show();
+        }
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            redis.Dispose();
+            redis = GetConnection(true);
         }
     }
 }

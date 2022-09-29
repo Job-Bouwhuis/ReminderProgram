@@ -280,6 +280,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.monthCalander);
             this.Name = "AddScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddScreen";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.taskData)).EndInit();

@@ -16,7 +16,7 @@ public partial class LoginScreen : Form
     {
         ShowDialog();
 
-        return SnowSerializer.Deserialize<Connection>(AppSettings.Default.DefualtConnection);
+        return AppSettings.Default.DefualtConnection.Deserialize<Connection>();
     }
 
     private void ConnectionInputBox_TextChanged(object sender, EventArgs e)
