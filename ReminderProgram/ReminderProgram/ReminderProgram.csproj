@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.6.66" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="SnowLibrary">
       <HintPath>Libraries\SnowLibrary.dll</HintPath>
     </Reference>

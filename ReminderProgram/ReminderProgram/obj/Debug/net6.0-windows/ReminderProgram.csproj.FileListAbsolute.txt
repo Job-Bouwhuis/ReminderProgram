@@ -19,3 +19,7 @@ C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\
 C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.pdb
 C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.genruntimeconfig.cache
 C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ref\ReminderProgram.dll
+C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\bin\Debug\net6.0-windows\Pipelines.Sockets.Unofficial.dll
+C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\bin\Debug\net6.0-windows\StackExchange.Redis.dll
+C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\bin\Debug\net6.0-windows\System.IO.Pipelines.dll
+C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.AddScreen.resources
