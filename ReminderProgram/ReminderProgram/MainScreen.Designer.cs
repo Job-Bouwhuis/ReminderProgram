@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.TaskViewer = new System.Windows.Forms.TreeView();
             this.NewButton = new System.Windows.Forms.Button();
             this.TaskDetailsButtons = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // treeView1
+            // TaskView
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 12);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(261, 426);
-            this.treeView1.TabIndex = 0;
+            this.TaskViewer.Location = new System.Drawing.Point(12, 12);
+            this.TaskViewer.Name = "TaskView";
+            this.TaskViewer.Size = new System.Drawing.Size(261, 426);
+            this.TaskViewer.TabIndex = 0;
             // 
             // NewButton
             // 
@@ -66,7 +66,7 @@
             this.ClientSize = new System.Drawing.Size(505, 450);
             this.Controls.Add(this.TaskDetailsButtons);
             this.Controls.Add(this.NewButton);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.TaskViewer);
             this.Name = "MainScreen";
             this.Text = "Reminder Program";
             this.ResumeLayout(false);
@@ -75,7 +75,7 @@
 
         #endregion
 
-        private TreeView treeView1;
+        private TreeView TaskViewer;
         private Button NewButton;
         private Button TaskDetailsButtons;
     }

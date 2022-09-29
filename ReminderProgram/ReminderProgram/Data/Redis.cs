@@ -13,9 +13,7 @@ namespace ReminderProgram.Data
         private ConnectionMultiplexer? redis { get; init; }
         private IDatabase? db { get; init; }
 
-        private string Connection { get; init; }
-        private int Port { get; init; }
-        private string? Password { get; init; }
+        private Connection connection { get; init; }
 
         /// <summary>
         /// represents an empty RedisValue class
@@ -25,17 +23,19 @@ namespace ReminderProgram.Data
         /// <summary>
         /// creates a new instance of this class, and creates a new connection to the Redis database if the given values are valid
         /// </summary>
-        /// <param name="connection"></param>
-        /// <param name="port"></param>
-        /// <param name="password"></param>
         public Redis(string connection, int port, string? password = null)
         {
-            Connection = connection;
-            Port = port;
-            Password = password;
+            this.connection = new Connection(connection, port, password);
 
             redis = ConnectionMultiplexer.Connect(new ConfigurationOptions { EndPoints = { $"{connection}:{port}" }, Password = password });
             db = redis.GetDatabase();
+        }
+        /// <summary>
+        /// creates a new instance of this class, and creates a new connection to the Redis database if the given values are valid
+        /// </summary>
+        public Redis(Connection connection)
+        {
+            this.connection = connection;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace ReminderProgram.Data
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        /// <returns>true if the operation was successfull, otherwise false</returns>
+        /// <returns>true if the operation was successfull, otherwise false</returns>++
         public bool Set(string key, string value) => db != null && db.StringSet(key, value);
         /// <summary>
         /// gets the value associated with the given key

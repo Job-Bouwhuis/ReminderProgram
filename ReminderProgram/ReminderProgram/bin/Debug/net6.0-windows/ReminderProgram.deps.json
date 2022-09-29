@@ -13,6 +13,11 @@
         },
         "runtime": {
           "ReminderProgram.dll": {}
+        },
+        "resources": {
+          "aa-ER/ReminderProgram.resources.dll": {
+            "locale": "aa-ER"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/5.0.0": {},
