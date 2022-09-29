@@ -8,4 +8,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Libraries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SnowLibrary">
+      <HintPath>Libraries\SnowLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
