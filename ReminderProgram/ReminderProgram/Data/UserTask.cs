@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReminderProgram.Data;
 
-internal class UserTask
+public class UserTask
 {
     public string taskName;
     public string taskDescription;
@@ -40,7 +40,7 @@ internal class UserTask
 
 
 
-internal class UserTaskNotificationControl
+public class UserTaskNotificationControl
 {
     public int min60Notifications = 0;
     public int min30Notifications = 0;

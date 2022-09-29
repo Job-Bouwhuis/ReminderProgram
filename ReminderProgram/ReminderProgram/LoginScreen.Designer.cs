@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SubmitCridentialsButton = new System.Windows.Forms.Button();
+            this.SerializedConnectionInput = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PortInputBox)).BeginInit();
             this.SuspendLayout();
@@ -93,10 +94,16 @@
             this.SubmitCridentialsButton.UseVisualStyleBackColor = true;
             this.SubmitCridentialsButton.Click += new System.EventHandler(this.SubmitCridentialsButton_Click);
             // 
+            // SerializedConnectionInput
+            // 
+            resources.ApplyResources(this.SerializedConnectionInput, "SerializedConnectionInput");
+            this.SerializedConnectionInput.Name = "SerializedConnectionInput";
+            // 
             // LoginScreen
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SerializedConnectionInput);
             this.Controls.Add(this.SubmitCridentialsButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -123,5 +130,6 @@
         private Label label2;
         private Label label3;
         private Button SubmitCridentialsButton;
+        private TextBox SerializedConnectionInput;
     }
 }

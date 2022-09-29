@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.TaskViewer = new System.Windows.Forms.TreeView();
             this.NewButton = new System.Windows.Forms.Button();
             this.TaskDetailsButtons = new System.Windows.Forms.Button();
             this.LogoutButton = new System.Windows.Forms.Button();
             this.RefreshButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.AppIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,6 +95,7 @@
             this.RefreshButton.TabIndex = 4;
             this.RefreshButton.Text = "Refresh";
             this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -115,6 +119,12 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(493, 438);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
+            // AppIcon
+            // 
+            this.AppIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("AppIcon.Icon")));
+            this.AppIcon.Text = "Reminder Program";
+            this.AppIcon.Visible = true;
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -124,6 +134,7 @@
             this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reminder Program";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainScreen_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -137,5 +148,6 @@
         private Button LogoutButton;
         private Button RefreshButton;
         private TableLayoutPanel tableLayoutPanel1;
+        internal NotifyIcon AppIcon;
     }
 }

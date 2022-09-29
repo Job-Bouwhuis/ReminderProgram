@@ -14,7 +14,7 @@ public sealed class Redis : IDisposable
     private IDatabase? db { get; set; }
 
     public delegate void RedisConnectedEvent();
-    public RedisConnectedEvent? OnRedisConnect;
+    public RedisConnectedEvent? OnRedisConnect { get; set; }
 
 
     public bool IsConnected
@@ -39,7 +39,7 @@ public sealed class Redis : IDisposable
     /// </summary>
     public Redis(Connection connection) => this.connection = connection;
 
-    public async Task<bool> Connect()
+    public async Task<bool> ConnectAsync()
     {
         try
         {
@@ -59,6 +59,27 @@ public sealed class Redis : IDisposable
                 return true;
             });
             throw new Exception("Connecting task failed to execute.");
+        }
+        finally
+        {
+            if (IsConnected)
+                OnRedisConnect?.Invoke();
+        }
+    }
+    public bool Connect()
+    {
+        try
+        {
+            try
+            {
+                redis = ConnectionMultiplexer.Connect(new ConfigurationOptions { EndPoints = { $"{connection.connection}:{connection.port}" }, Password = connection.password });
+                db = redis.GetDatabase();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         finally
         {
@@ -121,11 +142,13 @@ public sealed class Redis : IDisposable
     /// gets all keys within the database
     /// </summary>
     /// <returns>an array of RedisKeys that were found in the database</returns>
-    public RedisKey[]? GetAllKeys()
+    public RedisKey[] GetAllKeys()
     {
         try
         {
-            return redis?.GetServer(redis.GetEndPoints().First()).Keys().ToArray();
+            if (redis == null)
+                return Array.Empty<RedisKey>();
+            return redis.GetServer(redis.GetEndPoints().First()).Keys().ToArray();
         }
         catch
         {
@@ -185,7 +208,10 @@ public sealed class Redis : IDisposable
 
     public void Dispose()
     {
-        redis.Close();
-        redis.Dispose();
+        if(redis != null)
+        {
+            redis.Close();
+            redis.Dispose();
+        }
     }
 }
