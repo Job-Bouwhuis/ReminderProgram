@@ -49,7 +49,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(572, 426);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(491, 276);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // selectDate
@@ -59,7 +59,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selectDate.Location = new System.Drawing.Point(3, 3);
             this.selectDate.Name = "selectDate";
-            this.selectDate.Size = new System.Drawing.Size(280, 23);
+            this.selectDate.Size = new System.Drawing.Size(239, 23);
             this.selectDate.TabIndex = 0;
             // 
             // dataDates
@@ -68,17 +68,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataDates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataDates.Location = new System.Drawing.Point(289, 3);
+            this.dataDates.Location = new System.Drawing.Point(248, 3);
             this.dataDates.Name = "dataDates";
             this.dataDates.RowTemplate.Height = 25;
-            this.dataDates.Size = new System.Drawing.Size(280, 420);
+            this.dataDates.Size = new System.Drawing.Size(240, 270);
             this.dataDates.TabIndex = 1;
             // 
             // AddScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(596, 450);
+            this.ClientSize = new System.Drawing.Size(515, 300);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AddScreen";
             this.Text = "AddScreen";
