@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReminderProgram.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,16 @@ namespace ReminderProgram
         public AddScreen()
         {
             InitializeComponent();
+            AddItems();
         }
+
+        public void AddItems()
+        {
+            foreach (string priority in AddScreenUtilities.GetPriorities())
+            {
+                dataGridViewComboBoxColumn1.Items.Add(priority);
+            }
+        }
+
     }
 }

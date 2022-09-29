@@ -48,3 +48,4 @@ D:\Github\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windo
 D:\Github\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.pdb
 D:\Github\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.genruntimeconfig.cache
 D:\Github\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ref\ReminderProgram.dll
+D:\Github\ReminderProgram\ReminderProgram\ReminderProgram\bin\Debug\net6.0-windows\ReminderProgram.dll.config

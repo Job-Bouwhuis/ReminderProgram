@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataDates = new System.Windows.Forms.DataGridView();
+            this.taskData = new System.Windows.Forms.DataGridView();
             this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.StartDateLabel = new System.Windows.Forms.Label();
@@ -47,8 +47,9 @@
             this.TaskName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataDates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taskData)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -62,7 +63,7 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.71725F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.28275F));
-            this.tableLayoutPanel1.Controls.Add(this.dataDates, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.taskData, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(201, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -71,32 +72,32 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(481, 255);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // dataDates
+            // taskData
             // 
-            this.dataDates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.taskData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataDates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataDates.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataDates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataDates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.taskData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.taskData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.taskData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.taskData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Task,
-            this.dataGridViewTextBoxColumn1});
-            this.dataDates.Location = new System.Drawing.Point(3, 3);
-            this.dataDates.Name = "dataDates";
-            this.dataDates.RowTemplate.Height = 25;
-            this.dataDates.Size = new System.Drawing.Size(262, 249);
-            this.dataDates.TabIndex = 1;
+            this.dataGridViewComboBoxColumn1});
+            this.taskData.Location = new System.Drawing.Point(3, 3);
+            this.taskData.Name = "taskData";
+            this.taskData.RowTemplate.Height = 25;
+            this.taskData.Size = new System.Drawing.Size(261, 249);
+            this.taskData.TabIndex = 1;
             // 
             // Task
             // 
             this.Task.HeaderText = "Task";
             this.Task.Name = "Task";
             // 
-            // dataGridViewTextBoxColumn1
+            // dataGridViewComboBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Priority";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewComboBoxColumn1.HeaderText = "Priority";
+            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
             // 
             // tableLayoutPanel2
             // 
@@ -107,12 +108,12 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(271, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(270, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(207, 249);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(208, 249);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -133,7 +134,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(201, 118);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(202, 118);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // StartDateLabel
@@ -142,7 +143,7 @@
             this.StartDateLabel.AutoSize = true;
             this.StartDateLabel.Location = new System.Drawing.Point(3, 7);
             this.StartDateLabel.Name = "StartDateLabel";
-            this.StartDateLabel.Size = new System.Drawing.Size(195, 15);
+            this.StartDateLabel.Size = new System.Drawing.Size(196, 15);
             this.StartDateLabel.TabIndex = 0;
             this.StartDateLabel.Text = "Start Date:";
             // 
@@ -152,26 +153,30 @@
             this.endDateLabel.AutoSize = true;
             this.endDateLabel.Location = new System.Drawing.Point(3, 65);
             this.endDateLabel.Name = "endDateLabel";
-            this.endDateLabel.Size = new System.Drawing.Size(195, 15);
+            this.endDateLabel.Size = new System.Drawing.Size(196, 15);
             this.endDateLabel.TabIndex = 1;
             this.endDateLabel.Text = "End Date:";
             // 
             // endDatePicker
             // 
             this.endDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.endDatePicker.CustomFormat = "HH:mm";
+            this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.endDatePicker.Location = new System.Drawing.Point(3, 91);
             this.endDatePicker.Name = "endDatePicker";
-            this.endDatePicker.Size = new System.Drawing.Size(195, 23);
+            this.endDatePicker.ShowUpDown = true;
+            this.endDatePicker.Size = new System.Drawing.Size(196, 23);
             this.endDatePicker.TabIndex = 2;
             // 
             // startDatePicker
             // 
             this.startDatePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.startDatePicker.CustomFormat = "HH:mm";
+            this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.startDatePicker.Location = new System.Drawing.Point(3, 32);
             this.startDatePicker.Name = "startDatePicker";
-            this.startDatePicker.Size = new System.Drawing.Size(195, 23);
+            this.startDatePicker.ShowUpDown = true;
+            this.startDatePicker.Size = new System.Drawing.Size(196, 23);
             this.startDatePicker.TabIndex = 3;
             // 
             // tableLayoutPanel4
@@ -188,7 +193,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.37984F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.62016F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(201, 119);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(202, 119);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // descriptionLabel
@@ -197,7 +202,7 @@
             this.descriptionLabel.AutoSize = true;
             this.descriptionLabel.Location = new System.Drawing.Point(3, 4);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(195, 15);
+            this.descriptionLabel.Size = new System.Drawing.Size(196, 15);
             this.descriptionLabel.TabIndex = 2;
             this.descriptionLabel.Text = "Description";
             // 
@@ -208,13 +213,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.descriptionText.Location = new System.Drawing.Point(3, 26);
             this.descriptionText.Name = "descriptionText";
-            this.descriptionText.Size = new System.Drawing.Size(195, 90);
+            this.descriptionText.Size = new System.Drawing.Size(196, 90);
             this.descriptionText.TabIndex = 3;
             this.descriptionText.Text = "";
             // 
             // monthCalander
             // 
-            this.monthCalander.Location = new System.Drawing.Point(18, 18);
+            this.monthCalander.Location = new System.Drawing.Point(18, 12);
             this.monthCalander.Name = "monthCalander";
             this.monthCalander.TabIndex = 2;
             // 
@@ -247,18 +252,29 @@
             // removeButton
             // 
             this.removeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.removeButton.Location = new System.Drawing.Point(526, 276);
+            this.removeButton.Location = new System.Drawing.Point(445, 276);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(75, 23);
             this.removeButton.TabIndex = 4;
             this.removeButton.Text = "Remove";
             this.removeButton.UseVisualStyleBackColor = true;
             // 
+            // updateButton
+            // 
+            this.updateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateButton.Location = new System.Drawing.Point(526, 276);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(75, 23);
+            this.updateButton.TabIndex = 5;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            // 
             // AddScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 311);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -266,7 +282,7 @@
             this.Name = "AddScreen";
             this.Text = "AddScreen";
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataDates)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taskData)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -279,7 +295,7 @@
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private DataGridView dataDates;
+        private DataGridView taskData;
         private MonthCalendar monthCalander;
         private DataGridViewTextBoxColumn StartDate;
         private DataGridViewTextBoxColumn Priority;
@@ -293,9 +309,10 @@
         private TableLayoutPanel tableLayoutPanel4;
         private Label descriptionLabel;
         private RichTextBox descriptionText;
-        private DataGridViewTextBoxColumn Task;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private Button addButton;
         private Button removeButton;
+        private DataGridViewTextBoxColumn Task;
+        private DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
+        private Button updateButton;
     }
 }
