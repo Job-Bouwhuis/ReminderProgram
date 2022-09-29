@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "9xeknCTZIWj0ab09hMCReBD9vLcbqevI3W40NeXlQV0Gp/T7DcC0B0n5NKxHwBodzOXUWZU96tgQMkYemNnO/Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
@@ -19,5 +20,11 @@
     "C:\\Users\\jobbo\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
     "C:\\Users\\jobbo\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
   ],
+=======
+  "dgSpecHash": "9t54BJK6es0fH30sssvDVHhYorGk05As+vW6vbtRf9pYjkY1qIgwJ4bZ0v7aql9oSZoaffv1bAPa5EuPnPnfoA==",
+  "success": true,
+  "projectFilePath": "D:\\Github\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
+  "expectedPackageFiles": [],
+>>>>>>> 7872ee1 (added Addscreen)
   "logs": []
 }
