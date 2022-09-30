@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
+using SnowLibrary;
 using StackExchange.Redis;
 
 namespace ReminderProgram.Data;
@@ -137,6 +138,16 @@ public sealed class Redis : IDisposable
             value = EmptyValue;
             return false;
         }
+    }
+    /// <summary>
+    /// Gets all the data from the database
+    /// </summary>
+    /// <returns></returns>
+    public List<RedisValue> GetAllValues()
+    {
+        List<RedisValue> list = new();
+        GetAllKeys().Foreach(x => list.Add(Get(x)));
+        return list;
     }
     /// <summary>
     /// gets all keys within the database

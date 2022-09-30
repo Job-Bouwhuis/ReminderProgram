@@ -37,7 +37,25 @@
             this.RefreshButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.AppIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.sortByNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SortByNameAscending = new System.Windows.Forms.ToolStripMenuItem();
+            this.SortByNameDescending = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortByProiorityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SortByPriorityAscending = new System.Windows.Forms.ToolStripMenuItem();
+            this.SortByPriorityDescending = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortByDateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.startDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SortByStartDateAscending = new System.Windows.Forms.ToolStripMenuItem();
+            this.SortByStartDateDescending = new System.Windows.Forms.ToolStripMenuItem();
+            this.endDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SortByEndDateAscending = new System.Windows.Forms.ToolStripMenuItem();
+            this.SortByEndDateDescending = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TaskViewer
@@ -47,7 +65,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TaskViewer.Location = new System.Drawing.Point(3, 33);
             this.TaskViewer.Name = "TaskViewer";
-            this.TaskViewer.Size = new System.Drawing.Size(211, 402);
+            this.TaskViewer.Size = new System.Drawing.Size(211, 375);
             this.TaskViewer.TabIndex = 0;
             // 
             // NewButton
@@ -111,12 +129,12 @@
             this.tableLayoutPanel1.Controls.Add(this.NewButton, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.TaskDetailsButtons, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.LogoutButton, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 27);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(493, 438);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(493, 411);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // AppIcon
@@ -124,6 +142,138 @@
             this.AppIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("AppIcon.Icon")));
             this.AppIcon.Text = "Reminder Program";
             this.AppIcon.Visible = true;
+            this.AppIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AppIcon_MouseDown);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sortByNameToolStripMenuItem,
+            this.sortByProiorityToolStripMenuItem,
+            this.sortByDateToolStripMenuItem1,
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(505, 24);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "MainScreenMenuStrip";
+            // 
+            // sortByNameToolStripMenuItem
+            // 
+            this.sortByNameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SortByNameAscending,
+            this.SortByNameDescending});
+            this.sortByNameToolStripMenuItem.Name = "sortByNameToolStripMenuItem";
+            this.sortByNameToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.sortByNameToolStripMenuItem.Text = "Sort by Name";
+            // 
+            // SortByNameAscending
+            // 
+            this.SortByNameAscending.Name = "SortByNameAscending";
+            this.SortByNameAscending.Size = new System.Drawing.Size(136, 22);
+            this.SortByNameAscending.Text = "Ascending";
+            this.SortByNameAscending.Click += new System.EventHandler(this.SortByNameAscending_Click);
+            // 
+            // SortByNameDescending
+            // 
+            this.SortByNameDescending.Name = "SortByNameDescending";
+            this.SortByNameDescending.Size = new System.Drawing.Size(136, 22);
+            this.SortByNameDescending.Text = "Descending";
+            this.SortByNameDescending.Click += new System.EventHandler(this.SortByNameDescending_Click);
+            // 
+            // sortByProiorityToolStripMenuItem
+            // 
+            this.sortByProiorityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SortByPriorityAscending,
+            this.SortByPriorityDescending});
+            this.sortByProiorityToolStripMenuItem.Name = "sortByProiorityToolStripMenuItem";
+            this.sortByProiorityToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.sortByProiorityToolStripMenuItem.Text = "Sort by Priority";
+            // 
+            // SortByPriorityAscending
+            // 
+            this.SortByPriorityAscending.Name = "SortByPriorityAscending";
+            this.SortByPriorityAscending.Size = new System.Drawing.Size(136, 22);
+            this.SortByPriorityAscending.Text = "Ascending";
+            this.SortByPriorityAscending.Click += new System.EventHandler(this.SortByPriorityAscending_Click);
+            // 
+            // SortByPriorityDescending
+            // 
+            this.SortByPriorityDescending.Name = "SortByPriorityDescending";
+            this.SortByPriorityDescending.Size = new System.Drawing.Size(136, 22);
+            this.SortByPriorityDescending.Text = "Descending";
+            this.SortByPriorityDescending.Click += new System.EventHandler(this.SortByPriorityDescending_Click);
+            // 
+            // sortByDateToolStripMenuItem1
+            // 
+            this.sortByDateToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startDateToolStripMenuItem,
+            this.endDateToolStripMenuItem});
+            this.sortByDateToolStripMenuItem1.Name = "sortByDateToolStripMenuItem1";
+            this.sortByDateToolStripMenuItem1.Size = new System.Drawing.Size(83, 20);
+            this.sortByDateToolStripMenuItem1.Text = "Sort by Date";
+            // 
+            // startDateToolStripMenuItem
+            // 
+            this.startDateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SortByStartDateAscending,
+            this.SortByStartDateDescending});
+            this.startDateToolStripMenuItem.Name = "startDateToolStripMenuItem";
+            this.startDateToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.startDateToolStripMenuItem.Text = "Start Date";
+            // 
+            // SortByStartDateAscending
+            // 
+            this.SortByStartDateAscending.Name = "SortByStartDateAscending";
+            this.SortByStartDateAscending.Size = new System.Drawing.Size(136, 22);
+            this.SortByStartDateAscending.Text = "Ascending";
+            this.SortByStartDateAscending.Click += new System.EventHandler(this.SortByStartDateAscending_Click);
+            // 
+            // SortByStartDateDescending
+            // 
+            this.SortByStartDateDescending.Name = "SortByStartDateDescending";
+            this.SortByStartDateDescending.Size = new System.Drawing.Size(136, 22);
+            this.SortByStartDateDescending.Text = "Descending";
+            this.SortByStartDateDescending.Click += new System.EventHandler(this.SortByStartDateDescending_Click);
+            // 
+            // endDateToolStripMenuItem
+            // 
+            this.endDateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SortByEndDateAscending,
+            this.SortByEndDateDescending});
+            this.endDateToolStripMenuItem.Name = "endDateToolStripMenuItem";
+            this.endDateToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.endDateToolStripMenuItem.Text = "EndDate";
+            // 
+            // SortByEndDateAscending
+            // 
+            this.SortByEndDateAscending.Name = "SortByEndDateAscending";
+            this.SortByEndDateAscending.Size = new System.Drawing.Size(136, 22);
+            this.SortByEndDateAscending.Text = "Ascending";
+            this.SortByEndDateAscending.Click += new System.EventHandler(this.SortByEndDateAscending_Click);
+            // 
+            // SortByEndDateDescending
+            // 
+            this.SortByEndDateDescending.Name = "SortByEndDateDescending";
+            this.SortByEndDateDescending.Size = new System.Drawing.Size(136, 22);
+            this.SortByEndDateDescending.Text = "Descending";
+            this.SortByEndDateDescending.Click += new System.EventHandler(this.SortByEndDateDescending_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(12, 20);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(12, 20);
             // 
             // MainScreen
             // 
@@ -131,23 +281,45 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 476);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reminder Program";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainScreen_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private TreeView TaskViewer;
         private Button NewButton;
         private Button TaskDetailsButtons;
         private Button LogoutButton;
         private Button RefreshButton;
         private TableLayoutPanel tableLayoutPanel1;
         internal NotifyIcon AppIcon;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem sortByNameToolStripMenuItem;
+        private ToolStripMenuItem sortByProiorityToolStripMenuItem;
+        private ToolStripMenuItem SortByNameAscending;
+        private ToolStripMenuItem SortByNameDescending;
+        private ToolStripMenuItem SortByPriorityAscending;
+        private ToolStripMenuItem SortByPriorityDescending;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripMenuItem sortByDateToolStripMenuItem1;
+        private ToolStripMenuItem startDateToolStripMenuItem;
+        private ToolStripMenuItem SortByStartDateAscending;
+        private ToolStripMenuItem SortByStartDateDescending;
+        private ToolStripMenuItem endDateToolStripMenuItem;
+        private ToolStripMenuItem SortByEndDateAscending;
+        private ToolStripMenuItem SortByEndDateDescending;
+        internal TreeView TaskViewer;
     }
 }
