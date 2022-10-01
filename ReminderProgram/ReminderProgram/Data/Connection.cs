@@ -29,5 +29,10 @@ namespace ReminderProgram.Data
             port = 0;
             password = null;
         }
+
+        public bool IsEmpty()
+        {
+            return string.IsNullOrEmpty(connection) || port == 0;
+        }
     }
 }

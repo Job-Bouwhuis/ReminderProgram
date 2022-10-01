@@ -26,7 +26,7 @@ public partial class LoginScreen : Form
         if (!string.IsNullOrWhiteSpace(SerializedConnectionInput.Text))
         {
             Connection connection = SnowSerializer.Deserialize<Connection>(SerializedConnectionInput.Text);
-            if (connection != null && !string.IsNullOrWhiteSpace(connection.connection))
+            if (connection != null && !connection.IsEmpty())
                 this.connection = connection;
         }
         AppSettings.Default.DefualtConnection = SnowSerializer.Serialize(connection);

@@ -17,7 +17,6 @@ public sealed class Redis : IDisposable
     public delegate void RedisConnectedEvent();
     public RedisConnectedEvent? OnRedisConnect { get; set; }
 
-
     public bool IsConnected
     {
         get => redis != null && redis.IsConnected;
@@ -143,10 +142,10 @@ public sealed class Redis : IDisposable
     /// Gets all the data from the database
     /// </summary>
     /// <returns></returns>
-    public List<RedisValue> GetAllValues()
+    public List<RedisValue> GetAllValues(params string[] ignoreKeys)
     {
         List<RedisValue> list = new();
-        GetAllKeys().Foreach(x => list.Add(Get(x)));
+        GetAllKeys().Where(x => !ignoreKeys.Any(r => x == r)).Foreach(x => list.Add(Get(x)));
         return list;
     }
     /// <summary>

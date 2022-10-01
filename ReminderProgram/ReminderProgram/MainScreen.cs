@@ -12,13 +12,13 @@ namespace ReminderProgram
     public partial class MainScreen : Form
     {
         public Redis redis;
-        TaskViewHandler taskViewHandler;
+        TaskHandler taskHandler;
         public TaskSortMode taskSortMode = TaskSortMode.Name;
         bool sortAscending = true;
 
         public MainScreen()
         {
-            taskViewHandler = new(this);
+            taskHandler = new(this);
             InitializeComponent();
             redis = GetConnection();
             _ = redis.ConnectAsync();
@@ -60,7 +60,7 @@ namespace ReminderProgram
             }
 
             Show();
-            _ = taskViewHandler.ShowTasks(taskSortMode, true);
+            _ = taskHandler.ShowTasks(taskSortMode, true);
         }
         private static Redis GetConnection(bool forceLogin = false)
         {
@@ -75,12 +75,8 @@ namespace ReminderProgram
         private void OnRedisConnected()
         {
             TaskViewer.Nodes.Clear();
-            _ = taskViewHandler.ShowTasks(taskSortMode, true);
-        }
-
-        private void RefreshButton_Click(object sender, EventArgs e)
-        {
-            _ = taskViewHandler.RefreshTasks();
+            taskHandler.currentTasks = taskHandler.GetNewTasks();
+            _ = taskHandler.ShowTasks(taskSortMode, true);
         }
 
         //if the application is closing this method is called
@@ -118,51 +114,61 @@ namespace ReminderProgram
         {
             taskSortMode = TaskSortMode.Name;
             sortAscending = true;
-            _ = taskViewHandler.ShowTasks(taskSortMode, sortAscending);
+            _ = taskHandler.ShowTasks(taskSortMode, sortAscending);
         }
         private void SortByNameDescending_Click(object sender, EventArgs e)
         {
             taskSortMode = TaskSortMode.Name;
             sortAscending = false;
-            _ = taskViewHandler.ShowTasks(taskSortMode, sortAscending);
+            _ = taskHandler.ShowTasks(taskSortMode, sortAscending);
         }
         private void SortByPriorityAscending_Click(object sender, EventArgs e)
         {
             taskSortMode = TaskSortMode.Priority;
             sortAscending = true;
-            _ = taskViewHandler.ShowTasks(taskSortMode, sortAscending);
+            _ = taskHandler.ShowTasks(taskSortMode, sortAscending);
         }
         private void SortByPriorityDescending_Click(object sender, EventArgs e)
         {
             taskSortMode = TaskSortMode.Priority;
             sortAscending = false;
-            _ = taskViewHandler.ShowTasks(taskSortMode, sortAscending);
+            _ = taskHandler.ShowTasks(taskSortMode, sortAscending);
         }
 
         private void SortByStartDateAscending_Click(object sender, EventArgs e)
         {
             taskSortMode = TaskSortMode.StartDate;
             sortAscending = true;
-            _ = taskViewHandler.ShowTasks(taskSortMode, sortAscending);
+            _ = taskHandler.ShowTasks(taskSortMode, sortAscending);
         }
         private void SortByStartDateDescending_Click(object sender, EventArgs e)
         {
             taskSortMode = TaskSortMode.StartDate;
             sortAscending = false;
-            _ = taskViewHandler.ShowTasks(taskSortMode, sortAscending);
+            _ = taskHandler.ShowTasks(taskSortMode, sortAscending);
         }
 
         private void SortByEndDateAscending_Click(object sender, EventArgs e)
         {
             taskSortMode = TaskSortMode.EndDate;
             sortAscending = true;
-            _ = taskViewHandler.ShowTasks(taskSortMode, sortAscending);
+            _ = taskHandler.ShowTasks(taskSortMode, sortAscending);
         }
         private void SortByEndDateDescending_Click(object sender, EventArgs e)
         {
             taskSortMode = TaskSortMode.EndDate;
             sortAscending = false;
-            _ = taskViewHandler.ShowTasks(taskSortMode, sortAscending);
+            _ = taskHandler.ShowTasks(taskSortMode, sortAscending);
+        }
+
+        private void softRefreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<UserTask> newTasks = new();
+            redis.GetAllValues().Foreach(x => newTasks.Add(SnowSerializer.Deserialize<UserTask>(x)));
+
+            foreach(var task in newTasks)
+            {
+            }
         }
     }
 
@@ -174,13 +180,22 @@ namespace ReminderProgram
         EndDate
     }
 
-    public class TaskViewHandler
+    public class TaskHandler
     {
         MainScreen ms;
-
-        public TaskViewHandler(MainScreen ms)
+        public List<UserTask> currentTasks = new();
+        public TaskHandler(MainScreen ms)
         {
             this.ms = ms;
+        }
+
+        public bool TaskExists(string name) => currentTasks.Any(x => x.taskName == name);
+
+        public List<UserTask> GetNewTasks()
+        {
+            List<UserTask> newTasks = new();
+            ms.redis.GetAllValues().Foreach(x => SnowSerializer.Deserialize<UserTask>(x));
+            return newTasks;
         }
 
         public async Task<bool> ShowTasks(TaskSortMode sortingmode, bool ascending)
@@ -188,14 +203,12 @@ namespace ReminderProgram
             var tv = ms.TaskViewer;
             var n = tv.Nodes;
 
-
-
             if (tv.Nodes.Count > 0)
                 await ClearTaskView();
-            var tasks = GetAndSortTasks();
+            currentTasks = SortTasks();
 
             if (sortingmode == TaskSortMode.Name)
-                foreach(var task in tasks)
+                foreach(var task in currentTasks)
                 {
                     n.Add(new TreeNode(task.taskName));
                     await Task.Delay(35);
@@ -203,8 +216,7 @@ namespace ReminderProgram
 
             if (sortingmode == TaskSortMode.Priority)
             {
-                
-                foreach (var task in tasks)
+                foreach (var task in currentTasks)
                 {
                     List<string> nodeTextList = new();
                     foreach (TreeNode node in tv.Nodes)
@@ -218,7 +230,7 @@ namespace ReminderProgram
 
                 foreach (TreeNode sn in n)
                 {
-                    foreach (var task in tasks.Where(x => x.priority.ToString() == sn.Text))
+                    foreach (var task in currentTasks.Where(x => x.priority.ToString() == sn.Text))
                     {
                         sn.Nodes.Add(task.taskName);
                         await Task.Delay(35);
@@ -230,7 +242,7 @@ namespace ReminderProgram
 
             if(sortingmode == TaskSortMode.StartDate)
             {
-                foreach(var task in tasks)
+                foreach(var task in currentTasks)
                 {
                     List<string> nodeTextList = new();
                     foreach (TreeNode node in tv.Nodes)
@@ -244,7 +256,7 @@ namespace ReminderProgram
                 }
                 foreach (TreeNode sn in n)
                 {
-                    foreach (var task in tasks.Where(x => x.startDate.ToString("dddd dd MMMM : yyyy") == sn.Text))
+                    foreach (var task in currentTasks.Where(x => x.startDate.ToString("dddd dd MMMM : yyyy") == sn.Text))
                     {
                         sn.Nodes.Add(task.taskName);
                         await Task.Delay(35);
@@ -253,28 +265,21 @@ namespace ReminderProgram
             }
             foreach (TreeNode node in n)
             {
-
                 node.Expand();
                 await Task.Delay(35);
             }
-
             return true;
 
-            List<UserTask> GetAndSortTasks()
+            List<UserTask> SortTasks()
             {
-                List<UserTask> tasks = new();
-                IOrderedEnumerable<UserTask> result;
-                ms.redis.GetAllValues().Foreach(x => tasks.Add(SnowSerializer.Deserialize<UserTask>(x)));
-
-                result = sortingmode switch
+                IOrderedEnumerable<UserTask> result = sortingmode switch
                 {
-                    TaskSortMode.Name => ascending ? tasks.OrderBy(x => x.taskName) : tasks.OrderByDescending(x => x.taskName),
-                    TaskSortMode.Priority => ascending ? tasks.OrderBy(x => x.priority) : tasks.OrderByDescending(x => x.priority),
-                    TaskSortMode.StartDate => ascending ? tasks.OrderBy(x => x.startDate) : tasks.OrderByDescending(x => x.startDate),
-                    TaskSortMode.EndDate => ascending ? tasks.OrderBy(x => x.endDate) : tasks.OrderByDescending(x => x.endDate),
-                    _ => tasks.OrderBy(x => x.taskName)
+                    TaskSortMode.Name => ascending ? currentTasks.OrderBy(x => x.taskName) : currentTasks.OrderByDescending(x => x.taskName),
+                    TaskSortMode.Priority => ascending ? currentTasks.OrderBy(x => x.priority) : currentTasks.OrderByDescending(x => x.priority),
+                    TaskSortMode.StartDate => ascending ? currentTasks.OrderBy(x => x.startDate) : currentTasks.OrderByDescending(x => x.startDate),
+                    TaskSortMode.EndDate => ascending ? currentTasks.OrderBy(x => x.endDate) : currentTasks.OrderByDescending(x => x.endDate),
+                    _ => currentTasks.OrderBy(x => x.taskName)
                 };
-
                 return result.ToList();
             }
         }

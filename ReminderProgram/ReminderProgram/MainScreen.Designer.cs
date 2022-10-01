@@ -34,7 +34,6 @@
             this.NewButton = new System.Windows.Forms.Button();
             this.TaskDetailsButtons = new System.Windows.Forms.Button();
             this.LogoutButton = new System.Windows.Forms.Button();
-            this.RefreshButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.AppIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -51,9 +50,9 @@
             this.endDateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SortByEndDateAscending = new System.Windows.Forms.ToolStripMenuItem();
             this.SortByEndDateDescending = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.softRefreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hardRefreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -103,18 +102,6 @@
             this.LogoutButton.UseVisualStyleBackColor = true;
             this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
-            // RefreshButton
-            // 
-            this.RefreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RefreshButton.Location = new System.Drawing.Point(220, 33);
-            this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(154, 23);
-            this.RefreshButton.TabIndex = 4;
-            this.RefreshButton.Text = "Refresh";
-            this.RefreshButton.UseVisualStyleBackColor = true;
-            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -124,7 +111,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
-            this.tableLayoutPanel1.Controls.Add(this.RefreshButton, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.TaskViewer, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.NewButton, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.TaskDetailsButtons, 0, 0);
@@ -150,9 +136,7 @@
             this.sortByNameToolStripMenuItem,
             this.sortByProiorityToolStripMenuItem,
             this.sortByDateToolStripMenuItem1,
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3});
+            this.refreshToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(505, 24);
@@ -260,20 +244,27 @@
             this.SortByEndDateDescending.Text = "Descending";
             this.SortByEndDateDescending.Click += new System.EventHandler(this.SortByEndDateDescending_Click);
             // 
-            // toolStripMenuItem1
+            // refreshToolStripMenuItem
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
+            this.refreshToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.softRefreshToolStripMenuItem,
+            this.hardRefreshToolStripMenuItem});
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.refreshToolStripMenuItem.Text = "Refresh";
             // 
-            // toolStripMenuItem2
+            // softRefreshToolStripMenuItem
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(12, 20);
+            this.softRefreshToolStripMenuItem.Name = "softRefreshToolStripMenuItem";
+            this.softRefreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.softRefreshToolStripMenuItem.Text = "Soft Refresh";
+            this.softRefreshToolStripMenuItem.Click += new System.EventHandler(this.softRefreshToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem3
+            // hardRefreshToolStripMenuItem
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(12, 20);
+            this.hardRefreshToolStripMenuItem.Name = "hardRefreshToolStripMenuItem";
+            this.hardRefreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hardRefreshToolStripMenuItem.Text = "Hard Refresh";
             // 
             // MainScreen
             // 
@@ -300,7 +291,6 @@
         private Button NewButton;
         private Button TaskDetailsButtons;
         private Button LogoutButton;
-        private Button RefreshButton;
         private TableLayoutPanel tableLayoutPanel1;
         internal NotifyIcon AppIcon;
         private MenuStrip menuStrip1;
@@ -310,9 +300,6 @@
         private ToolStripMenuItem SortByNameDescending;
         private ToolStripMenuItem SortByPriorityAscending;
         private ToolStripMenuItem SortByPriorityDescending;
-        private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem toolStripMenuItem2;
-        private ToolStripMenuItem toolStripMenuItem3;
         private ToolStripMenuItem sortByDateToolStripMenuItem1;
         private ToolStripMenuItem startDateToolStripMenuItem;
         private ToolStripMenuItem SortByStartDateAscending;
@@ -321,5 +308,8 @@
         private ToolStripMenuItem SortByEndDateAscending;
         private ToolStripMenuItem SortByEndDateDescending;
         internal TreeView TaskViewer;
+        private ToolStripMenuItem refreshToolStripMenuItem;
+        private ToolStripMenuItem softRefreshToolStripMenuItem;
+        private ToolStripMenuItem hardRefreshToolStripMenuItem;
     }
 }

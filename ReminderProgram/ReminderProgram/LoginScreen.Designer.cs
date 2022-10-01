@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginScreen));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.PasswordInputBox = new System.Windows.Forms.TextBox();
             this.ConnectionInputBox = new System.Windows.Forms.TextBox();
+            this.SubmitCridentialsButton = new System.Windows.Forms.Button();
+            this.PasswordInputBox = new System.Windows.Forms.TextBox();
             this.PortInputBox = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.SubmitCridentialsButton = new System.Windows.Forms.Button();
             this.SerializedConnectionInput = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PortInputBox)).BeginInit();
@@ -45,21 +45,30 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.PasswordInputBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.ConnectionInputBox, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.SubmitCridentialsButton, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.PasswordInputBox, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.PortInputBox, 0, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // PasswordInputBox
-            // 
-            resources.ApplyResources(this.PasswordInputBox, "PasswordInputBox");
-            this.PasswordInputBox.Name = "PasswordInputBox";
-            this.PasswordInputBox.TextChanged += new System.EventHandler(this.PasswordInputBox_TextChanged);
             // 
             // ConnectionInputBox
             // 
             resources.ApplyResources(this.ConnectionInputBox, "ConnectionInputBox");
             this.ConnectionInputBox.Name = "ConnectionInputBox";
             this.ConnectionInputBox.TextChanged += new System.EventHandler(this.ConnectionInputBox_TextChanged);
+            // 
+            // SubmitCridentialsButton
+            // 
+            resources.ApplyResources(this.SubmitCridentialsButton, "SubmitCridentialsButton");
+            this.SubmitCridentialsButton.Name = "SubmitCridentialsButton";
+            this.SubmitCridentialsButton.UseVisualStyleBackColor = true;
+            this.SubmitCridentialsButton.Click += new System.EventHandler(this.SubmitCridentialsButton_Click);
+            // 
+            // PasswordInputBox
+            // 
+            resources.ApplyResources(this.PasswordInputBox, "PasswordInputBox");
+            this.PasswordInputBox.Name = "PasswordInputBox";
+            this.PasswordInputBox.TextChanged += new System.EventHandler(this.PasswordInputBox_TextChanged);
             // 
             // PortInputBox
             // 
@@ -87,13 +96,6 @@
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
-            // SubmitCridentialsButton
-            // 
-            resources.ApplyResources(this.SubmitCridentialsButton, "SubmitCridentialsButton");
-            this.SubmitCridentialsButton.Name = "SubmitCridentialsButton";
-            this.SubmitCridentialsButton.UseVisualStyleBackColor = true;
-            this.SubmitCridentialsButton.Click += new System.EventHandler(this.SubmitCridentialsButton_Click);
-            // 
             // SerializedConnectionInput
             // 
             resources.ApplyResources(this.SerializedConnectionInput, "SerializedConnectionInput");
@@ -104,12 +106,10 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.SerializedConnectionInput);
-            this.Controls.Add(this.SubmitCridentialsButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.PortInputBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "LoginScreen";
             this.tableLayoutPanel1.ResumeLayout(false);

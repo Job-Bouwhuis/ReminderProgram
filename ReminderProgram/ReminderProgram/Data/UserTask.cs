@@ -58,5 +58,11 @@ public class UserTaskNotificationControl
         min10Notifications = min10;
     }
     public UserTaskNotificationControl() { }
+
+    public bool HasNotified()
+    {
+        return min60Notifications == 0 && min30Notifications == 0 && min10Notifications == 0 &&
+            hour2Notifications == 0 && hour8Notifications == 0 && hour24Notifications == 0 && hour48Notifications == 0;
+    }
 }
 
