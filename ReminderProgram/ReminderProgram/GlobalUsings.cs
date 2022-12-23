@@ -1,0 +1,12 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using System.IO;
+global using ExcludeFromSerializationAttribute = WinterRose.Serialization.ExcludeFromSerializationAttribute;
+global using IncludeWithSerializationAttribute = WinterRose.Serialization.IncludeWithSerializationAttribute;
+global using IncludePrivateFieldsAttribute = WinterRose.Serialization.IncludePrivateFieldsAttribute;
+global using IncludePrivateFieldsForFieldAttribute = WinterRose.Serialization.IncludePrivateFieldsForFieldAttribute;
+global using IncludeAllPropertiesAttribute = WinterRose.Serialization.IncludeAllPropertiesAttribute;
+global using WinterRose;

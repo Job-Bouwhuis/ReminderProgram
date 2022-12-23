@@ -1,5 +1,5 @@
 ﻿using ReminderProgram.Data;
-using SnowLibrary.Serialization;
+using WinterRose.Serialization;
 
 namespace ReminderProgram;
 
@@ -12,7 +12,7 @@ public partial class LoginScreen : Form
     public Connection Login()
     {
         ShowDialog();
-        return AppSettings.Default.DefualtConnection.Deserialize<Connection>();
+        return SnowSerializer.DeserializeWIP<Connection>(AppSettings.Default.DefualtConnection);
     }
 
     private void ConnectionInputBox_TextChanged(object sender, EventArgs e) => connection.connection = ConnectionInputBox.Text;
@@ -25,11 +25,11 @@ public partial class LoginScreen : Form
     {
         if (!string.IsNullOrWhiteSpace(SerializedConnectionInput.Text))
         {
-            Connection connection = SnowSerializer.Deserialize<Connection>(SerializedConnectionInput.Text);
+            Connection connection = SnowSerializer.DeserializeWIP<Connection>(SerializedConnectionInput.Text);
             if (connection != null && !string.IsNullOrWhiteSpace(connection.connection))
                 this.connection = connection;
         }
-        AppSettings.Default.DefualtConnection = SnowSerializer.Serialize(connection);
+        AppSettings.Default.DefualtConnection = SnowSerializer.SerializeWIP(connection);
         AppSettings.Default.Save();
         Close();
     }
