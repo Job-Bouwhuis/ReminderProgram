@@ -54,3 +54,6 @@ C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\
 C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.LoginScreen.resources
 C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.LoginScreen.aa-ER.resources
 C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\aa-ER\ReminderProgram.resources.dll
+C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.dll
+C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\refint\ReminderProgram.dll
+C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.pdb
