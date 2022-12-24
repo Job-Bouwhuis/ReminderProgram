@@ -128,7 +128,6 @@
             this.AppIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("AppIcon.Icon")));
             this.AppIcon.Text = "Reminder Program";
             this.AppIcon.Visible = true;
-            this.AppIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AppIcon_MouseDown);
             // 
             // menuStrip1
             // 
@@ -155,16 +154,15 @@
             // SortByNameAscending
             // 
             this.SortByNameAscending.Name = "SortByNameAscending";
-            this.SortByNameAscending.Size = new System.Drawing.Size(136, 22);
+            this.SortByNameAscending.Size = new System.Drawing.Size(180, 22);
             this.SortByNameAscending.Text = "Ascending";
             this.SortByNameAscending.Click += new System.EventHandler(this.SortByNameAscending_Click);
             // 
             // SortByNameDescending
             // 
             this.SortByNameDescending.Name = "SortByNameDescending";
-            this.SortByNameDescending.Size = new System.Drawing.Size(136, 22);
+            this.SortByNameDescending.Size = new System.Drawing.Size(180, 22);
             this.SortByNameDescending.Text = "Descending";
-            this.SortByNameDescending.Click += new System.EventHandler(this.SortByNameDescending_Click);
             // 
             // sortByProiorityToolStripMenuItem
             // 
@@ -180,14 +178,12 @@
             this.SortByPriorityAscending.Name = "SortByPriorityAscending";
             this.SortByPriorityAscending.Size = new System.Drawing.Size(136, 22);
             this.SortByPriorityAscending.Text = "Ascending";
-            this.SortByPriorityAscending.Click += new System.EventHandler(this.SortByPriorityAscending_Click);
             // 
             // SortByPriorityDescending
             // 
             this.SortByPriorityDescending.Name = "SortByPriorityDescending";
             this.SortByPriorityDescending.Size = new System.Drawing.Size(136, 22);
             this.SortByPriorityDescending.Text = "Descending";
-            this.SortByPriorityDescending.Click += new System.EventHandler(this.SortByPriorityDescending_Click);
             // 
             // sortByDateToolStripMenuItem1
             // 
@@ -212,14 +208,12 @@
             this.SortByStartDateAscending.Name = "SortByStartDateAscending";
             this.SortByStartDateAscending.Size = new System.Drawing.Size(136, 22);
             this.SortByStartDateAscending.Text = "Ascending";
-            this.SortByStartDateAscending.Click += new System.EventHandler(this.SortByStartDateAscending_Click);
             // 
             // SortByStartDateDescending
             // 
             this.SortByStartDateDescending.Name = "SortByStartDateDescending";
             this.SortByStartDateDescending.Size = new System.Drawing.Size(136, 22);
             this.SortByStartDateDescending.Text = "Descending";
-            this.SortByStartDateDescending.Click += new System.EventHandler(this.SortByStartDateDescending_Click);
             // 
             // endDateToolStripMenuItem
             // 
@@ -235,14 +229,12 @@
             this.SortByEndDateAscending.Name = "SortByEndDateAscending";
             this.SortByEndDateAscending.Size = new System.Drawing.Size(136, 22);
             this.SortByEndDateAscending.Text = "Ascending";
-            this.SortByEndDateAscending.Click += new System.EventHandler(this.SortByEndDateAscending_Click);
             // 
             // SortByEndDateDescending
             // 
             this.SortByEndDateDescending.Name = "SortByEndDateDescending";
             this.SortByEndDateDescending.Size = new System.Drawing.Size(136, 22);
             this.SortByEndDateDescending.Text = "Descending";
-            this.SortByEndDateDescending.Click += new System.EventHandler(this.SortByEndDateDescending_Click);
             // 
             // refreshToolStripMenuItem
             // 
@@ -256,14 +248,13 @@
             // softRefreshToolStripMenuItem
             // 
             this.softRefreshToolStripMenuItem.Name = "softRefreshToolStripMenuItem";
-            this.softRefreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.softRefreshToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.softRefreshToolStripMenuItem.Text = "Soft Refresh";
-            this.softRefreshToolStripMenuItem.Click += new System.EventHandler(this.softRefreshToolStripMenuItem_Click);
             // 
             // hardRefreshToolStripMenuItem
             // 
             this.hardRefreshToolStripMenuItem.Name = "hardRefreshToolStripMenuItem";
-            this.hardRefreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hardRefreshToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.hardRefreshToolStripMenuItem.Text = "Hard Refresh";
             // 
             // MainScreen

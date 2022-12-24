@@ -16,12 +16,10 @@ public partial class LoginScreen : Form
     }
 
     private void ConnectionInputBox_TextChanged(object sender, EventArgs e) => connection.connection = ConnectionInputBox.Text;
-
     private void PasswordInputBox_TextChanged(object sender, EventArgs e) => connection.password = PasswordInputBox.Text;
-
     private void PortInputBox_ValueChanged(object sender, EventArgs e) => connection.port = (int)PortInputBox.Value;
 
-    private void SubmitCridentialsButton_Click(object sender, EventArgs e)
+    private void SubmitCredentialsButton_Click(object sender, EventArgs e)
     {
         if (!string.IsNullOrWhiteSpace(SerializedConnectionInput.Text))
         {
@@ -29,7 +27,8 @@ public partial class LoginScreen : Form
             if (connection != null && !string.IsNullOrWhiteSpace(connection.connection))
                 this.connection = connection;
         }
-        AppSettings.Default.DefualtConnection = SnowSerializer.SerializeWIP(connection);
+        string serializedConnectionString = SnowSerializer.SerializeWIP(connection);
+        AppSettings.Default.DefualtConnection = serializedConnectionString;
         AppSettings.Default.Save();
         Close();
     }

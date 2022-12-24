@@ -7,18 +7,17 @@ namespace ReminderProgram;
 public partial class MainScreen : Form
 {
     public RedisConnection redis;
+
     public MainScreen()
     {
         InitializeComponent();
         redis = GetConnection();
         OnRedisConnected();
-
-        //Clipboard.SetText(AppSettings.Default.DefualtConnection);
     }
 
     public async Task<bool> ShowTasks()
     {
-        if(TaskViewer.Nodes.Count > 0)
+        if (TaskViewer.Nodes.Count > 0)
         {
             await ClearTaskViewer();
         }
@@ -99,7 +98,7 @@ public partial class MainScreen : Form
 
     private void NewButton_Click(object sender, EventArgs e)
     {
-        var addScreen = new AddScreen();
+        var addScreen = new Form();
 
         Hide();
         addScreen.ShowDialog();
@@ -114,7 +113,6 @@ public partial class MainScreen : Form
         Hide();
         while (true)
         {
-            redis.Dispose();
             redis = GetConnection(forceGetCredentials: true);
             if (redis.IsConnected)
                 break;
@@ -123,24 +121,47 @@ public partial class MainScreen : Form
         Show();
         _ = ShowTasks();
     }
-    private static RedisConnection GetConnection(bool forceGetCredentials = false)
+    private RedisConnection GetConnection(bool forceGetCredentials = false)
     {
+        Connection connection;
         try
         {
-            Connection connection = SnowSerializer.DeserializeWIP<Connection>(AppSettings.Default.DefualtConnection);
+            connection = SnowSerializer.DeserializeWIP<Connection>(AppSettings.Default.DefualtConnection);
+            if (forceGetCredentials || connection == null || connection.port == 0)
+            {
+                throw new Exception("yes");
+            }
+            return new(connection!.connection, connection.port, connection.password!);
         }
         catch
         {
-
+            if (!forceGetCredentials)
+            {
+                var result = MessageBox.Show("Failed to connect. \n" +
+                                             "   Yes: Try again, \n" +
+                                             "   No: abort, \n" +
+                                             "   Cancel: log out", 
+                                             
+                                             "Attention", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation);
+                
+                if (result == DialogResult.No)
+                    Environment.Exit(0);
+            }
+            try
+            {
+                LoginScreen login = new();
+                connection = login.Login();
+                return new(connection!.connection, connection.port, connection.password!);
+            }
+            catch
+            {
+                MessageBox.Show("Credentials are invalid or there is no internet access.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
+                return null;
+            }
         }
-
-        if (forceGetCredentials || connection == null || connection.port == 0)
-        {
-            LoginScreen login = new();
-            connection = login.Login();
-        }
-        return new(connection.connection, connection.port, connection.password);
     }
+    
     private void OnRedisConnected()
     {
         TaskViewer.Nodes.Clear();
@@ -154,7 +175,9 @@ public partial class MainScreen : Form
 
     private void MainScreen_FormClosing(object sender, FormClosingEventArgs e)
     {
-        List<CloseReason> reasonsToIgnoreConfirmation = new List<CloseReason>() { CloseReason.TaskManagerClosing, CloseReason.FormOwnerClosing, CloseReason.WindowsShutDown, CloseReason.ApplicationExitCall };
+        List<CloseReason> reasonsToIgnoreConfirmation = new List<CloseReason>() 
+        { CloseReason.TaskManagerClosing, CloseReason.FormOwnerClosing, CloseReason.WindowsShutDown, CloseReason.ApplicationExitCall };
+        
         if (!reasonsToIgnoreConfirmation.Contains(e.CloseReason))
         {
             var result = MessageBox.Show("Do you want to close the application?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -167,5 +190,45 @@ public partial class MainScreen : Form
         }
     }
 
+    private void SortByNameAscending_Click(object sender, EventArgs e)
+    {
 
+    }
+}
+
+
+public enum TaskSortMode
+{
+    /// <summary>
+    /// Used to sort the tasks by their start date in ascending order
+    /// </summary>
+    StartDate,
+    /// <summary>
+    /// Used to sort the tasks by their start date in descending order
+    /// </summary>
+    StartDateDescending,
+    /// <summary>
+    /// Used to sort the tasks by their end date in ascending order
+    /// </summary>
+    EndDate,
+    /// <summary>
+    /// Used to sort the tasks by their end date in descending order
+    /// </summary>
+    EndDateDescending,
+    /// <summary>
+    /// Used to sort the tasks by their priority in ascending order
+    /// </summary>
+    Priority,
+    /// <summary>
+    /// Used to sort the tasks by their priority in descending order
+    /// </summary>
+    PriorityDescending,
+    /// <summary>
+    /// Used to sort the tasks by their name in ascending order
+    /// </summary>
+    Name,
+    /// <summary>
+    /// Used to sort the tasks by their name in descending order
+    /// </summary>
+    NameDescending
 }

@@ -62,7 +62,7 @@
             resources.ApplyResources(this.SubmitCridentialsButton, "SubmitCridentialsButton");
             this.SubmitCridentialsButton.Name = "SubmitCridentialsButton";
             this.SubmitCridentialsButton.UseVisualStyleBackColor = true;
-            this.SubmitCridentialsButton.Click += new System.EventHandler(this.SubmitCridentialsButton_Click);
+            this.SubmitCridentialsButton.Click += new System.EventHandler(this.SubmitCredentialsButton_Click);
             // 
             // PasswordInputBox
             // 

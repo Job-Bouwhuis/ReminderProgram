@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitRepositories\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj": {}
+    "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj": {}
   },
   "projects": {
-    "C:\\GitRepositories\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj": {
+    "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitRepositories\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
+        "projectUniqueName": "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
         "projectName": "ReminderProgram",
-        "projectPath": "C:\\GitRepositories\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
+        "projectPath": "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
         "packagesPath": "C:\\Users\\jobbo\\.nuget\\packages\\",
-        "outputPath": "C:\\GitRepositories\\ReminderProgram\\ReminderProgram\\ReminderProgram\\obj\\",
+        "outputPath": "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -27,7 +27,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "C:\\SnowLibrary Packages Source": {},
+          "D:\\SnowLibrary Nuget package source": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -56,6 +56,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.11, 6.0.11]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
