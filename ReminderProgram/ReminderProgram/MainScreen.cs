@@ -7,6 +7,7 @@ namespace ReminderProgram;
 public partial class MainScreen : Form
 {
     public RedisConnection redis;
+    public TaskSortMode sortMode;
 
     public MainScreen()
     {
@@ -15,52 +16,70 @@ public partial class MainScreen : Form
         OnRedisConnected();
     }
 
-    public async Task<bool> ShowTasks()
+    public bool ShowTasks()
     {
         if (TaskViewer.Nodes.Count > 0)
         {
-            await ClearTaskViewer();
+            ClearTaskViewer().Wait();
         }
         List<UserTask> userTasks = new();
-        userTasks = GetAllTasks().OrderBy(x => x.startDate).ToList();
+        userTasks = GetOrdereredTaskList();
 
         foreach (var task in userTasks)
         {
             if (TaskViewer.Nodes.ContainsKey(task.startDate.ToString("dddd, dd MMMM yyyy")))
                 continue;
             TaskViewer.Nodes.Add(task.startDate.ToString("dddd, dd MMMM yyyy"));
-            await Task.Delay(35);
+            Task.Delay(35).Wait();
         }
 
-        await Task.Delay(100);
+        Task.Delay(100).Wait();
 
         foreach (TreeNode node in TaskViewer.Nodes)
         {
             foreach (var task in userTasks.Where(x => x.startDate.ToString("dddd, dd MMMM yyyy") == node.Text))
             {
                 node.Nodes.Add(task.taskName);
-                await Task.Delay(35);
+                Task.Delay(35).Wait();
             }
         }
 
-        await Task.Delay(100);
+        Task.Delay(100).Wait();
         if (TaskViewer.Nodes.Count < 15)
             foreach (TreeNode node in TaskViewer.Nodes)
             {
                 node.Expand();
-                await Task.Delay(35);
+                Task.Delay(35).Wait();
             }
 
         return true;
-
-        List<UserTask> GetAllTasks()
-        {
-            List<UserTask> userTasks = new();
-
-            redis.GetKeysByPattern("*").Value.Foreach(x => userTasks.Add(SnowSerializer.DeserializeWIP<UserTask>(redis.Get<string, string>(x))));
-            return userTasks;
-        }
     }
+    public List<UserTask> GetOrdereredTaskList()
+    {
+        string[] taskKeys = redis.GetKeysByPattern("*");
+        List<UserTask> tasks = new();
+        foreach(string taskKey in taskKeys)
+        {
+            string serializedTask = redis.Get<string, string>(taskKey);
+            UserTask task = SnowSerializer.DeserializeWIP<UserTask>(serializedTask);
+            tasks.Add(task);
+        }
+
+        return sortMode switch
+        {
+            TaskSortMode.StartDate => tasks.OrderBy(x => x.startDate).ThenBy(x => x.taskName).ToList(),
+            TaskSortMode.StartDateDescending => tasks.OrderByDescending(x => x.startDate).ThenBy(x => x.taskName).ToList(),
+            TaskSortMode.EndDate => tasks.OrderBy(x => x.endDate).ThenBy(x => x.taskName).ToList(),
+            TaskSortMode.EndDateDescending => tasks.OrderByDescending(x => x.endDate).ThenBy(x => x.taskName).ToList(),
+            TaskSortMode.Priority => tasks.OrderBy(x => x.priority).ThenBy(x => x.taskName).ToList(),
+            TaskSortMode.PriorityDescending => tasks.OrderByDescending(x => x.priority).ThenBy(x => x.taskName).ToList(),
+            TaskSortMode.Name => tasks.OrderBy(x => x.taskName).ToList(),
+            TaskSortMode.NameDescending => tasks.OrderByDescending(x => x.taskName).ToList(),
+            _ => tasks
+        };
+
+    }
+
     public async Task<bool> ClearTaskViewer()
     {
         foreach (TreeNode node in TaskViewer.Nodes)
@@ -86,7 +105,7 @@ public partial class MainScreen : Form
     {
         await ClearTaskViewer();
         await Task.Delay(100);
-        return await ShowTasks();
+        return ShowTasks();
     }
     public void WindowsNotification(string title, string content, int showDurationInMiliseconds = 2000, ToolTipIcon icon = ToolTipIcon.Info)
     {
@@ -96,13 +115,19 @@ public partial class MainScreen : Form
         AppIcon.ShowBalloonTip(showDurationInMiliseconds);
     }
 
-    private void NewButton_Click(object sender, EventArgs e)
+    private void AddTaskButton_Click(object sender, EventArgs e)
     {
-        var addScreen = new Form();
+        var addScreen = new AddTaskForm();
 
         Hide();
         addScreen.ShowDialog();
         Show();
+        string serializedTask = SnowSerializer.SerializeWIP(addScreen.constructedTask);
+        if(redis.Set(addScreen.constructedTask.taskName, serializedTask) == RedisAnswerStatusCode.Faulted)
+        {
+            MessageBox.Show("Error adding the newly created task to the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        ShowTasks();
     }
     private void LogoutButton_Click(object sender, EventArgs e)
     {
@@ -119,7 +144,7 @@ public partial class MainScreen : Form
         }
 
         Show();
-        _ = ShowTasks();
+        ShowTasks();
     }
     private RedisConnection GetConnection(bool forceGetCredentials = false)
     {
@@ -165,12 +190,12 @@ public partial class MainScreen : Form
     private void OnRedisConnected()
     {
         TaskViewer.Nodes.Clear();
-        _ = ShowTasks();
+        ShowTasks();
     }
 
     private void RefreshButton_Click(object sender, EventArgs e)
     {
-        _ = RefreshTasks();
+        RefreshTasks();
     }
 
     private void MainScreen_FormClosing(object sender, FormClosingEventArgs e)

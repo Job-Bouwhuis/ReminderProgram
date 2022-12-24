@@ -2396,6 +2396,16 @@
             </summary>
             <param name="answer"></param>
         </member>
+        <member name="P:WinterRose.WIP.Redis.Framework.RedisConnectionBase.IsConnected">
+            <summary>
+            Returns if the current connection is linked to Redis
+            </summary>
+        </member>
+        <member name="T:WinterRose.WIP.Redis.RedisConnection">
+            <summary>
+            A class object that provides methods to communicate with a Redis database
+            </summary>
+        </member>
         <member name="P:WinterRose.WIP.Redis.RedisConnection.IsConnected">
             <summary>
             Gets whether there is a valid connection to Redis
@@ -2481,7 +2491,7 @@
             </summary>
             <typeparam name="K"></typeparam>
             <param name="key"></param>
-            <returns>the <see cref="T:RedisU.Utils.KeyType"/> of the given key</returns>
+            <returns>the <see cref="T:WinterRose.WIP.Redis.Utils.KeyType"/> of the given key</returns>
         </member>
         <member name="M:WinterRose.WIP.Redis.RedisConnection.SetKeyExpiry``1(``0,System.Int32)">
             <summary>
@@ -2510,7 +2520,7 @@
             <summary>
             Sets the given key to the given value
             </summary>
-            <returns><see cref="F:WinterRose.WIP.Redis.StatusCode.OK"/> if the operation succeeded, else <see cref="F:WinterRose.WIP.Redis.StatusCode.Faulted"/></returns>
+            <returns><see cref="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.OK"/> if the operation succeeded, else <see cref="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.Faulted"/></returns>
         </member>
         <member name="M:WinterRose.WIP.Redis.RedisConnection.Append``2(``0,``1)">
             <summary>
@@ -2542,7 +2552,7 @@
             <summary>
             Sets the key with an immidiate expire time of the specified number of seconds
             </summary>
-            <returns><see cref="F:WinterRose.WIP.Redis.StatusCode.OK"/> if succeeded, else <see cref="F:WinterRose.WIP.Redis.StatusCode.Faulted"/></returns>
+            <returns><see cref="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.OK"/> if succeeded, else <see cref="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.Faulted"/></returns>
         </member>
         <member name="M:WinterRose.WIP.Redis.RedisConnection.Dispose">
             <summary>
@@ -2560,12 +2570,18 @@
             <summary>
             Pings the database and checks whether it is accessable
             </summary>
-            <returns><see cref="F:WinterRose.WIP.Redis.StatusCode.Pong"/> if the database is reached, else <see cref="F:WinterRose.WIP.Redis.StatusCode.Undefined"/> with a <see cref="P:WinterRose.WIP.Redis.RedisAnswer`1.HasValue"/> set to false</returns>
+            <returns><see cref="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.Pong"/> if the database is reached, else <see cref="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.Undefined"/> with a <see cref="P:WinterRose.WIP.Redis.RedisAnswer`1.HasValue"/> set to false</returns>
         </member>
         <member name="M:WinterRose.WIP.Redis.RedisConnection.Close">
             <summary>
             Connection is closed as soon as all the pending replies are written to the client.
             </summary>
+        </member>
+        <member name="M:WinterRose.WIP.Redis.RedisConnection.GetDBSize">
+            <summary>
+            Gets the size of the database in bytes
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:WinterRose.WIP.Redis.RedisConnection.SetExpireAt``1(``0,System.Int32)">
             <summary>
@@ -2614,9 +2630,24 @@
             <summary>
             <b>WARNING</b>. This will delete <b><em>every</em></b> entry within your database. Use with caution
             </summary>
-            <returns><see cref="F:WinterRose.WIP.Redis.StatusCode.OK"/> if the operation succeeded. else <see cref="F:WinterRose.WIP.Redis.StatusCode.Faulted"/></returns>
+            <returns><see cref="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.OK"/> if the operation succeeded. else <see cref="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.Faulted"/></returns>
         </member>
-        <member name="F:WinterRose.WIP.Redis.StatusCode.Pong">
+        <member name="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.Undefined">
+            <summary>
+            An undefined answer statuscode
+            </summary>
+        </member>
+        <member name="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.OK">
+            <summary>
+            This is returned from the database when the requested operation completed successfully
+            </summary>
+        </member>
+        <member name="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.Faulted">
+            <summary>
+            This is returned from the database when the requested operation failed to complete
+            </summary>
+        </member>
+        <member name="F:WinterRose.WIP.Redis.RedisAnswerStatusCode.Pong">
             <summary>
             Gets returned when <see cref="M:WinterRose.WIP.Redis.RedisConnection.Ping"></see> is called and a connection is established
             </summary>

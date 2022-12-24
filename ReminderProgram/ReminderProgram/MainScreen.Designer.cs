@@ -78,7 +78,7 @@
             this.NewButton.TabIndex = 1;
             this.NewButton.Text = "New";
             this.NewButton.UseVisualStyleBackColor = true;
-            this.NewButton.Click += new System.EventHandler(this.NewButton_Click);
+            this.NewButton.Click += new System.EventHandler(this.AddTaskButton_Click);
             // 
             // TaskDetailsButtons
             // 

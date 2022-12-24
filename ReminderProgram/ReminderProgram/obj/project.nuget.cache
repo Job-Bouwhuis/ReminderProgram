@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Bmk6mXFzXEJPw0t5r8caLDjAMn0q8rfnLUGglwPN7UdzMTDIdEdyZfT77ZeJM1sT9xs4XSGNH+MKahlnTxNveA==",
+  "dgSpecHash": "CwpWoROKA7Y8nw3w9wZcHxCGuH1uq3t5bYg2iZRkSvEulSK/+wSWj4MRKDqwCvEmCuOOi4bYUQ76pzGPtPg0/w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jobbo\\Documents\\GitHub\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\jobbo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.11\\microsoft.netcore.app.host.win-x64.6.0.11.nupkg.sha512",
-    "C:\\Users\\jobbo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.11\\microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512",
-    "C:\\Users\\jobbo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.11\\microsoft.windowsdesktop.app.ref.6.0.11.nupkg.sha512",
-    "C:\\Users\\jobbo\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.11\\microsoft.netcore.app.ref.6.0.11.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\GitRepositories\\ReminderProgram\\ReminderProgram\\ReminderProgram\\ReminderProgram.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

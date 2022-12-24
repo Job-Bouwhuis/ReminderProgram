@@ -52,7 +52,6 @@ C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net
 C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\refint\ReminderProgram.dll
 C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.pdb
 C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.csproj.AssemblyReference.cache
-C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.AddScreen.resources
 C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.LoginScreen.resources
 C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.MainScreen.resources
 C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.LoginScreen.aa-ER.resources
@@ -76,3 +75,4 @@ C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net
 C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ref\ReminderProgram.dll
 C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\bin\Debug\net6.0-windows\WinterRose.dll
 C:\Users\jobbo\Documents\GitHub\ReminderProgram\ReminderProgram\ReminderProgram\bin\Debug\net6.0-windows\WinterRose.xml
+C:\GitRepositories\ReminderProgram\ReminderProgram\ReminderProgram\obj\Debug\net6.0-windows\ReminderProgram.AddTaskForm.resources
